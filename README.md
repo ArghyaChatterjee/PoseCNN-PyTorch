@@ -29,43 +29,41 @@ If you find the package is useful in your research, please consider citing:
 
 ### Required environment
 
-- Ubuntu 16.04 or above
-- PyTorch 0.4.1 or above
-- CUDA 9.1 or above
+- Ubuntu 20.04 or above
+- PyTorch 1.11 or above
+- CUDA 11.3 or above
 
 ### Installation
 
-Use python3. If ROS is needed, compile with python2.
-
 1. Install [PyTorch](https://pytorch.org/)
 
-2. Install Eigen from the Github source code [here](https://github.com/eigenteam/eigen-git-mirror)
+2. Install Eigen: 'sudo apt install libeigen3-dev'
+3. Install fmt to compile Sophus, use the release 8-1-1 [fmt](https://github.com/fmtlib/fmt/tree/8.1.1)
+4. Install Sophus from Strasdat instead of Yxung, the Github source code is [here](https://github.com/strasdat/Sophus.git)
 
-3. Install Sophus from the Github source code [here](https://github.com/yuxng/Sophus)
-
-4. Install python packages
+5. Install python packages
    ```Shell
    pip install -r requirement.txt
    ```
 
-5. Initialize the submodules in ycb_render
+6. Initialize the submodules in ycb_render
    ```Shell
    git submodule update --init --recursive
    ```
 
-6. Compile the new layers under $ROOT/lib/layers we introduce in PoseCNN
+7. Compile the new layers under $ROOT/lib/layers we introduce in PoseCNN
     ```Shell
     cd $ROOT/lib/layers
     sudo python setup.py install
     ```
 
-7. Compile cython components
+8. Compile cython components
     ```Shell
     cd $ROOT/lib/utils
     python setup.py build_ext --inplace
     ```
 
-8. Compile the ycb_render in $ROOT/ycb_render
+9. Compile the ycb_render in $ROOT/ycb_render
     ```Shell
     cd $ROOT/ycb_render
     sudo python setup.py develop
