@@ -11,12 +11,12 @@ import cv2
 import scipy
 import matplotlib.pyplot as plt
 
-from fcn.config import cfg
-from fcn.test_common import refine_pose
+from lib.fcn.config import cfg
+from lib.fcn.test_common import refine_pose
 from transforms3d.quaternions import mat2quat, quat2mat, qmult
-from utils.se3 import *
-from utils.nms import nms
-from utils.pose_error import re, te
+from lib.utils.se3 import *
+from lib.utils.nms import nms
+from lib.utils.pose_error import re, te
 
 class AverageMeter(object):
     """Computes and stores the average and current value"""

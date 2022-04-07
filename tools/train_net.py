@@ -6,26 +6,19 @@
 
 """Train a PoseCNN on an image database."""
 
-import torch
-import torch.nn.parallel
+import argparse
+import os
+import pprint
+import sys
+
+import numpy as np
 import torch.backends.cudnn as cudnn
-import torch.optim
 import torch.utils.data
 
-import argparse
-import pprint
-import numpy as np
-import sys
-import os
-import os.path as osp
-import cv2
-
-import _init_paths
-import datasets
-import networks
-from fcn.config import cfg, cfg_from_file, get_output_dir
-from fcn.train import train
-from datasets.factory import get_dataset
+from lib import networks
+from lib.datasets.factory import get_dataset
+from lib.fcn.config import cfg_from_file, cfg, get_output_dir
+from lib.fcn.train import train
 
 def parse_args():
     """
@@ -136,7 +129,8 @@ if __name__ == '__main__':
 
     # renderer
     if cfg.TRAIN.SYNTHESIZE:
-        from ycb_renderer import YCBRenderer
+        from ycb_render.ycb_renderer import YCBRenderer
+        # from ycb_render import YCBRenderer
         print('loading 3D models')
         cfg.renderer = YCBRenderer(width=cfg.TRAIN.SYN_WIDTH, height=cfg.TRAIN.SYN_HEIGHT, render_marker=False)
         cfg.renderer.load_objects(dataset.model_mesh_paths, dataset.model_texture_paths, dataset.model_colors)

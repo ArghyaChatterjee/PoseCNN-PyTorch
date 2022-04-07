@@ -26,23 +26,18 @@ import numpy as np
 import time
 import rospy
 import _init_paths
-import networks
+import lib.networks
 
-from fcn.test_imageset import test_image
-from cv_bridge import CvBridge, CvBridgeError
-from fcn.config import cfg, cfg_from_file, get_output_dir
-from datasets.factory import get_dataset
-from std_msgs.msg import String
-from sensor_msgs.msg import Image, CameraInfo
+from lib.fcn.test_imageset import test_image
+from lib.fcn.config import cfg, cfg_from_file, get_output_dir
+from lib.datasets.factory import get_dataset
 from transforms3d.quaternions import mat2quat, quat2mat, qmult
 from scipy.optimize import minimize
-from utils.blob import pad_im, chromatic_transform, add_noise
-from geometry_msgs.msg import PoseStamped
-from ycb_renderer import YCBRenderer
-from utils.se3 import *
-from utils.nms import *
-from Queue import Queue
-from sdf.sdf_optimizer import sdf_optimizer
+from lib.utils.blob import pad_im, chromatic_transform, add_noise
+from ycb_render.ycb_renderer import YCBRenderer
+from lib.utils.se3 import *
+from lib.utils.nms import *
+from lib.sdf.sdf_optimizer import sdf_optimizer
 
 lock = threading.Lock()
 

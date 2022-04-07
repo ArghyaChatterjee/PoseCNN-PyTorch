@@ -6,26 +6,22 @@
 
 """Test a DeepIM network on an image database."""
 
-import torch
-import torch.nn.parallel
+import argparse
+import os
+import pprint
+import sys
+
+import numpy as np
 import torch.backends.cudnn as cudnn
 import torch.utils.data
 
-import argparse
-import pprint
-import time, os, sys
-import os.path as osp
-import numpy as np
-import random
-import scipy.io
+from lib import networks
+from lib.datasets.factory import get_dataset
+from lib.fcn.config import cfg, cfg_from_file, get_output_dir
+from lib.fcn.test_dataset import test
+from lib.sdf.sdf_optimizer import sdf_optimizer
+from ycb_render.ycb_renderer import YCBRenderer
 
-import _init_paths
-from fcn.test_dataset import test
-from fcn.config import cfg, cfg_from_file, get_output_dir
-from datasets.factory import get_dataset
-import networks
-from ycb_renderer import YCBRenderer
-from sdf.sdf_optimizer import sdf_optimizer
 
 def parse_args():
     """

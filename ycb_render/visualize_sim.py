@@ -7,7 +7,7 @@ import cv2
 import numpy as np
 import glob
 from transforms3d.quaternions import mat2quat, quat2mat
-from ycb_renderer_sim import YCBRenderer
+from ycb_render.ycb_renderer import YCBRenderer
 
 if __name__ == '__main__':
 
@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
     for file_path in files[1:]:
 
-        print file_path
+        print(file_path)
       
         data = np.load(file_path).item()
         cls_indexes = []
@@ -72,12 +72,12 @@ if __name__ == '__main__':
                 y = data['relative_poses'][i][5]
                 z = data['relative_poses'][i][6]
                 RT[:, 3] = [x, y, z]
-                print RT
+                print(RT)
 
                 qt = np.zeros((7, ), dtype=np.float32)
                 qt[3:] = mat2quat(RT[:3, :3])
                 qt[:3] = RT[:, 3]
-                print qt
+                print(qt)
 
                 poses.append(qt)
 

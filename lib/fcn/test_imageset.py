@@ -2,21 +2,17 @@
 # This work is licensed under the NVIDIA Source Code License - Non-commercial. Full
 # text can be found in LICENSE.md
 
-import torch
-import torch.nn.functional as F
-import time
-import sys, os
-import cv2
 import numpy as np
 import matplotlib.pyplot as plt
+import torch
 
 from fcn.config import cfg
 from fcn.render_utils import render_image
 from fcn.test_common import refine_pose
-from transforms3d.quaternions import mat2quat, quat2mat, qmult
-from utils.se3 import *
 from utils.nms import *
 from utils.pose_error import re, te
+
+from utils.se3 import allocentric2egocentric
 
 
 def test_image(network, dataset, im_color, im_depth=None, im_index=None):

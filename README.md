@@ -1,8 +1,7 @@
-# PoseCNN-PyTorch: A PyTorch Implementation of the PoseCNN Framework for 6D Object Pose Estimation
+# [modified from original repo] PoseCNN-PyTorch: A PyTorch Implementation of the PoseCNN Framework for 6D Object Pose Estimation
 
 ### Introduction
-
-We implement PoseCNN in PyTorch in this project.
+This is the PyTorch-based implementation of PoseCNN, initally supplied by NVLabs!!
 
 PoseCNN is an end-to-end Convolutional Neural Network for 6D object pose estimation. PoseCNN estimates the 3D translation of an object by localizing its center in the image and predicting its distance from the camera. The 3D rotation of the object is estimated by regressing to a quaternion representation. [arXiv](https://arxiv.org/abs/1711.00199), [Project](https://rse-lab.cs.washington.edu/projects/posecnn/)
 
@@ -32,6 +31,12 @@ If you find the package is useful in your research, please consider citing:
 - Ubuntu 20.04 or above
 - PyTorch 1.11 or above
 - CUDA 11.3 or above
+
+other requirements:
+- for fmt version 8.1.1
+- for assimp 4.1.0 (default on Ubuntu 20.04 is 5...)
+
+if assimp is not found create either an symlink or add it to venv/sit-packages/pyassimp
 
 ### Installation
 

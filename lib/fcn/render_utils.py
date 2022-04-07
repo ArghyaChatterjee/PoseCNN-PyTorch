@@ -2,14 +2,10 @@
 # This work is licensed under the NVIDIA Source Code License - Non-commercial. Full
 # text can be found in LICENSE.md
 
-import torch
-import time
-import sys, os
-import numpy as np
 import cv2
-import matplotlib.pyplot as plt
+import numpy as np
+import torch
 from fcn.config import cfg
-from transforms3d.quaternions import quat2mat
 
 
 def render_image(dataset, im, rois, poses, poses_refine, labels):
