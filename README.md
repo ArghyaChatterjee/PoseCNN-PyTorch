@@ -28,27 +28,50 @@ If you find the package is useful in your research, please consider citing:
 
 ### Required environment
 
-- Ubuntu 20.04 or above
-- PyTorch 1.11 or above
-- CUDA 11.3 or above
+- Ubuntu 20.04
+- PyTorch 1.12.1 
+- CUDA 11.3 
 
 other requirements:
 - for fmt version 8.1.1
 - for assimp 4.1.0 (default on Ubuntu 20.04 is 5...)
 
 if assimp is not found create either an symlink or add it to venv/sit-packages/pyassimp
-
+ 
 ### Installation
 
-1. Install [PyTorch](https://pytorch.org/)
+1. Install [PyTorch](https://pytorch.org/) - 1.12.1 (use sudo)
+  ```Shell
+   sudo pip3 install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113Looking in indexes: https://pypi.org/simple, https://download.pytorch.org/whl/cu113
+   ```
 
 2. Install Eigen: 'sudo apt install libeigen3-dev'
 3. Install fmt to compile Sophus, use the release 8-1-1 [fmt](https://github.com/fmtlib/fmt/tree/8.1.1)
+```Shell
+    cd ~
+    git clone https://github.com/fmtlib/fmt.git
+    cd fmt
+    git checkout tags:8.1.1
+    mkdir build
+    cd build
+    cmake ..
+    make
+    sudo make install
+   ```
 4. Install Sophus from Strasdat instead of Yxung, the Github source code is [here](https://github.com/strasdat/Sophus.git)
-
+```Shell
+    cd ~
+    git clone https://github.com/strasdat/Sophus.git
+    cd Sophus
+    mkdir build
+    cd build
+    cmake ..
+    make
+    sudo make install
+   ```
 5. Install python packages
    ```Shell
-   pip install -r requirement.txt
+   pip3 install -r requirement.txt
    ```
 
 6. Initialize the submodules in ycb_render
@@ -59,19 +82,19 @@ if assimp is not found create either an symlink or add it to venv/sit-packages/p
 7. Compile the new layers under $ROOT/lib/layers we introduce in PoseCNN
     ```Shell
     cd $ROOT/lib/layers
-    sudo python setup.py install
+    sudo python3 setup.py install
     ```
 
 8. Compile cython components
     ```Shell
     cd $ROOT/lib/utils
-    python setup.py build_ext --inplace
+    python3 setup.py build_ext --inplace
     ```
 
 9. Compile the ycb_render in $ROOT/ycb_render
     ```Shell
     cd $ROOT/ycb_render
-    sudo python setup.py develop
+    sudo python3 setup.py develop
     ```
 
 ### Download
