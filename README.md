@@ -40,12 +40,20 @@ if assimp is not found create either an symlink or add it to venv/sit-packages/p
  
 ### Installation
 
-1. Install [PyTorch](https://pytorch.org/) - 1.12.1 (use sudo)
+1. Export CUDA_HOME:
+```Shell
+   sudo ln -s /usr/local/cuda-11.3 /usr/local/cuda
+   export CUDA_HOME=/usr/local/cuda
+   ```
+2. Install [PyTorch](https://pytorch.org/) - 1.12.1 (use sudo)
   ```Shell
    sudo pip3 install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113Looking in indexes: https://pypi.org/simple, https://download.pytorch.org/whl/cu113
    ```
 
-2. Install Eigen: 'sudo apt install libeigen3-dev'
+2. Install Eigen: 
+```Shell
+   sudo apt install libeigen3-dev
+   ```
 3. Install fmt to compile Sophus, use the release 8-1-1 [fmt](https://github.com/fmtlib/fmt/tree/8.1.1)
 ```Shell
     cd ~
@@ -81,19 +89,19 @@ if assimp is not found create either an symlink or add it to venv/sit-packages/p
 
 7. Compile the new layers under $ROOT/lib/layers we introduce in PoseCNN
     ```Shell
-    cd $ROOT/lib/layers
+    cd ~/PoseCNN-PyTorch/lib/layers
     sudo python3 setup.py install
     ```
 
 8. Compile cython components
     ```Shell
-    cd $ROOT/lib/utils
+    cd ~/PoseCNN-PyTorch/lib/utils
     python3 setup.py build_ext --inplace
     ```
 
 9. Compile the ycb_render in $ROOT/ycb_render
     ```Shell
-    cd $ROOT/ycb_render
+    cd ~/PoseCNN-PyTorch/ycb_render
     sudo python3 setup.py develop
     ```
 
